@@ -9,9 +9,6 @@ android:
     - extra-google-m2repository
 jdk:
   - oraclejdk8
-script:
-  - cd todoapp
-  - ./gradlew test
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
@@ -19,3 +16,14 @@ cache:
     - $HOME/.m2
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+    
+addons:
+  sonarcloud:
+    organization: "sevixoo"
+    
+script:
+  - cd todoapp
+  - ./gradlew assembleDebug --stacktrace
+  - ls app/build/intermediates
+  - ls app/build/intermediates/classes/mock
+  - sonar-scanner
