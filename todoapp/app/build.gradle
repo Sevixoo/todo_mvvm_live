@@ -1,3 +1,7 @@
+plugins {
+    id "org.sonarqube" version "2.5"
+}
+
 apply plugin: 'com.android.application'
 
 android {
@@ -114,4 +118,11 @@ dependencies {
     androidTestImplementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     androidTestImplementation "androidx.appcompat:appcompat:$appCompatVersion"
     androidTestImplementation "com.google.android.material:material:$materialVersion"
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "Java Gradle-based project analyzed on SonarCloud using Travis"
+        property "sonar.projectKey", "Sevixoo"
+    }
 }
